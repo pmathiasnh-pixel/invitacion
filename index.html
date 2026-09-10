@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Mis XV Años - Matilde Aleida Nieto</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+
+    <!-- FontAwesome para Iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- ScrollReveal CDN -->
+    <script src="https://unpkg.com/scrollreveal"></script>
+
+    <style>
+        /* ==========================================================================
+           VARIABLES Y ESTILOS GLOBALES
+           ========================================================================== */
+        :root {
+            --color-bg: #FCF9F6;            /* Marfil claro */
+            --color-card: #FFFFFF;          /* Blanco cálido */
+            --color-primary: #8C626A;       /* Rosa empolvado / Muted Rose */
+            --color-secondary: #B89B72;     /* Dorado suave / Soft Gold */
+            --color-text: #4A4443;          /* Gris cálido elegante */
+            --color-light-rose: #F7EBEB;    /* Rosa muy tenue para acentos */
+            --font-title: 'Playfair Display', serif;
+            --font-script: 'Great Vibes', cursive;
+            --font-body: 'Montserrat', sans-serif;
+            --transition-speed: 0.4s;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            font-family: var(--font-body);
+            font-weight: 300;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Contenedor Principal Optimizado para Móvil */
+        .wrapper {
+            max-width: 480px;
+            margin: 0 auto;
+            background-color: var(--color-bg);
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.04);
+            position: relative;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Marcos y Texturas Ornamentales */
+        .frame-ornament {
+            position: absolute;
+            pointer-events: none;
+            z-index: 2;
+            width: 140px;
+            height: 140px;
+            opacity: 0.85;
+        }
+
+        .frame-top-left { top: 10px; left: 10px; }
+        .frame-top-right { top: 10px; right: 10px; transform: scaleX(-1); }
+        .frame-bottom-left { bottom: 10px; left: 10px; transform: scaleY(-1); }
+        .frame-bottom-right { bottom: 10px; right: 10px; transform: scale(-1); }
+
+        /* Botón Flotante de Música */
+        .music-control {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid var(--color-secondary);
+            color: var(--color-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 99;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .music-control.playing i {
+            animation: pulse 2s infinite;
+        }
+
+        /* ==========================================================================
+           1. PORTADA
+           ========================================================================== */
+        #portada {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 40px 20px;
+            position: relative;
+            background: linear-gradient(180deg, #FFFFFF 0%, var(--color-bg) 100%);
+            z-index: 10;
+            transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.8s ease;
+        }
+
+        .subtitle-script {
+            font-family: var(--font-script);
+            font-size: 2.2rem;
+            color: var(--color-secondary);
+            margin-bottom: 5px;
+        }
+
+        .main-title {
+            font-family: var(--font-title);
+            font-size: 2.3rem;
+            letter-spacing: 2px;
+            color: var(--color-primary);
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        .divider-line {
+            width: 60px;
+            height: 1px;
+            background-color: var(--color-secondary);
+            margin: 15px auto;
+        }
+
+        .event-date-badge {
+            font-family: var(--font-title);
+            font-size: 1.1rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--color-text);
+            margin-bottom: 40px;
+        }
+
+        .btn-main {
+            background: linear-gradient(135deg, var(--color-primary), #A3747D);
+            color: #FFFFFF;
+            border: none;
+            padding: 14px 36px;
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border-radius: 30px;
+            cursor: pointer;
+            box-shadow: 0 6px 18px rgba(140, 98, 106, 0.25);
+            transition: all 0.3s ease;
+            outline: none;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .btn-main:active {
+            transform: scale(0.97);
+        }
+
+        /* ==========================================================================
+           CONTENIDO PRINCIPAL (Oculto inicialmente)
+           ========================================================================== */
+        #main-content {
+            display: none;
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+
+        .section {
+            padding: 50px 25px;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title {
+            font-family: var(--font-title);
+            font-size: 1.6rem;
+            color: var(--color-primary);
+            margin-bottom: 10px;
+        }
+
+        .section-subtitle {
+            font-family: var(--font-script);
+            font-size: 1.8rem;
+            color: var(--color-secondary);
+            margin-bottom: 20px;
+        }
+
+        /* Card Container Style */
+        .card-box {
+            background-color: var(--color-card);
+            border-radius: 16px;
+            padding: 30px 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            border: 1px solid rgba(184, 155, 114, 0.15);
+            margin-top: 15px;
+            position: relative;
+        }
+
+        /* ==========================================================================
+           2. BIENVENIDA
+           ========================================================================== */
+        .welcome-text {
+            font-size: 0.95rem;
+            color: var(--color-text);
+            font-style: italic;
+            line-height: 1.8;
+        }
+
+        /* ==========================================================================
+           3. CUENTA REGRESIVA
+           ========================================================================== */
+        .countdown-container {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        .countdown-box {
+            background: var(--color-bg);
+            border: 1px solid rgba(184, 155, 114, 0.2);
+            border-radius: 10px;
+            padding: 10px 8px;
+            min-width: 65px;
+        }
+
+        .countdown-number {
+            font-family: var(--font-title);
+            font-size: 1.5rem;
+            color: var(--color-primary);
+            font-weight: 600;
+        }
+
+        .countdown-label {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--color-secondary);
+            margin-top: 2px;
+        }
+
+        /* ==========================================================================
+           4 y 5. DETALLES DEL EVENTO Y UBICACIÓN
+           ========================================================================== */
+        .detail-item {
+            margin-bottom: 25px;
+        }
+
+        .detail-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .detail-icon {
+            font-size: 1.4rem;
+            color: var(--color-secondary);
+            margin-bottom: 8px;
+        }
+
+        .detail-title {
+            font-family: var(--font-title);
+            font-size: 1.1rem;
+            color: var(--color-primary);
+            margin-bottom: 4px;
+        }
+
+        .detail-text {
+            font-size: 0.9rem;
+            color: var(--color-text);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--color-primary);
+            border: 1px solid var(--color-primary);
+            padding: 10px 24px;
+            font-family: var(--font-body);
+            font-size: 0.75rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            border-radius: 25px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline:active {
+            background-color: var(--color-primary);
+            color: #FFFFFF;
+        }
+
+        /* ==========================================================================
+           6. CONFIRMACIÓN DE ASISTENCIA (RSVP)
+           ========================================================================== */
+        .form-group {
+            margin-bottom: 18px;
+            text-align: left;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--color-primary);
+            margin-bottom: 6px;
+            font-weight: 500;
+        }
+
+        .form-input, .form-select, .form-textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid rgba(184, 155, 114, 0.3);
+            border-radius: 8px;
+            background-color: var(--color-bg);
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            color: var(--color-text);
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-input:focus, .form-select:focus, .form-textarea:focus {
+            border-color: var(--color-primary);
+        }
+
+        /* ==========================================================================
+           7. LLUVIA DE SOBRES
+           ========================================================================== */
+        .envelope-icon {
+            font-size: 2.2rem;
+            color: var(--color-secondary);
+            margin-bottom: 12px;
+        }
+
+        /* ==========================================================================
+           9. GALERÍA / COMPOSICIONES DECORATIVAS
+           ========================================================================== */
+        .floral-composition {
+            padding: 20px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .floral-svg-center {
+            width: 100%;
+            max-width: 280px;
+            height: auto;
+            opacity: 0.85;
+        }
+
+        /* ==========================================================================
+           FOOTER / CIERRE
+           ========================================================================== */
+        .footer {
+            padding: 40px 20px 60px 20px;
+            text-align: center;
+            background: linear-gradient(0deg, #FFFFFF 0%, var(--color-bg) 100%);
+        }
+
+        .footer-thanks {
+            font-family: var(--font-script);
+            font-size: 2.4rem;
+            color: var(--color-primary);
+            margin-bottom: 8px;
+        }
+
+        .footer-names {
+            font-family: var(--font-title);
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            color: var(--color-secondary);
+            text-transform: uppercase;
+        }
+
+        /* Keyframes */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.08); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="wrapper">
+
+        <!-- Control de Audio (Opcional, silenciado por defecto) -->
+        <div class="music-control" id="music-btn" title="Música de fondo">
+            <i class="fa-solid fa-music"></i>
+        </div>
+        <audio id="bg-audio" loop preload="none">
+            <!-- Agregar enlace a canción instrumental en formato mp3 cuando se requiera -->
+            <source src="" type="audio/mpeg">
+        </audio>
+
+        <!-- ==========================================================================
+           1. PORTADA
+           ========================================================================== -->
+        <section id="portada">
+            <!-- Ilustración Floral Superior SVG -->
+            <svg class="frame-ornament frame-top-left" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10,10 Q40,15 50,50 Q15,40 10,10 Z" fill="#F7EBEB" opacity="0.7"/>
+                <path d="M5,5 Q60,10 80,80" stroke="#B89B72" stroke-width="0.8" fill="none"/>
+                <circle cx="30" cy="25" r="4" fill="#8C626A" opacity="0.5"/>
+                <circle cx="45" cy="40" r="3" fill="#B89B72" opacity="0.6"/>
+            </svg>
+            <svg class="frame-ornament frame-top-right" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10,10 Q40,15 50,50 Q15,40 10,10 Z" fill="#F7EBEB" opacity="0.7"/>
+                <path d="M5,5 Q60,10 80,80" stroke="#B89B72" stroke-width="0.8" fill="none"/>
+                <circle cx="30" cy="25" r="4" fill="#8C626A" opacity="0.5"/>
+            </svg>
+
+            <span class="subtitle-script">Mis XV Años</span>
+            <h1 class="main-title">Matilde Aleida<br>Nieto</h1>
+            
+            <div class="divider-line"></div>
+            
+            <p class="event-date-badge">24 . 10 . 2026</p>
+
+            <button class="btn-main" id="btn-abrir">
+                <span>Abrir Invitación</span>
+                <i class="fa-solid fa-envelope-open" style="font-size: 0.8rem;"></i>
+            </button>
+
+            <!-- Ilustración Floral Inferior SVG -->
+            <svg class="frame-ornament frame-bottom-left" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10,10 Q40,15 50,50 Q15,40 10,10 Z" fill="#F7EBEB" opacity="0.7"/>
+                <path d="M5,5 Q60,10 80,80" stroke="#B89B72" stroke-width="0.8" fill="none"/>
+            </svg>
+            <svg class="frame-ornament frame-bottom-right" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10,10 Q40,15 50,50 Q15,40 10,10 Z" fill="#F7EBEB" opacity="0.7"/>
+                <path d="M5,5 Q60,10 80,80" stroke="#B89B72" stroke-width="0.8" fill="none"/>
+            </svg>
+        </section>
+
+        <!-- ==========================================================================
+           CONTENIDO PRINCIPAL
+           ========================================================================== -->
+        <main id="main-content">
+
+            <!-- 2. BIENVENIDA -->
+            <section class="section">
+                <div class="card-box reveal">
+                    <span class="section-subtitle">Un momento inolvidable</span>
+                    <p class="welcome-text">
+                        "Hay momentos en la vida que se vuelven eternos cuando se comparten con las personas más queridas.
+                        Hoy celebro el comienzo de una nueva etapa llena de sueños e ilusiones, y no hay mayor alegría que contar con tu presencia en este día tan especial."
+                    </p>
+                </div>
+            </section>
+
+            <!-- 3. CUENTA REGRESIVA -->
+            <section class="section" style="padding-top: 10px;">
+                <span class="section-title reveal">Faltan Muy Poco</span>
+                <div class="countdown-container reveal">
+                    <div class="countdown-box">
+                        <div class="countdown-number" id="cd-days">00</div>
+                        <div class="countdown-label">Días</div>
+                    </div>
+                    <div class="countdown-box">
+                        <div class="countdown-number" id="cd-hours">00</div>
+                        <div class="countdown-label">Horas</div>
+                    </div>
+                    <div class="countdown-box">
+                        <div class="countdown-number" id="cd-minutes">00</div>
+                        <div class="countdown-label">Min</div>
+                    </div>
+                    <div class="countdown-box">
+                        <div class="countdown-number" id="cd-seconds">00</div>
+                        <div class="countdown-label">Seg</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 4. DETALLES DEL EVENTO Y 5. UBICACIÓN -->
+            <section class="section">
+                <h2 class="section-title reveal">¿Dónde y Cuándo?</h2>
+                <span class="section-subtitle reveal">Detalles de la Recepción</span>
+
+                <div class="card-box reveal">
+                    <div class="detail-item">
+                        <div class="detail-icon"><i class="fa-regular fa-calendar-check"></i></div>
+                        <div class="detail-title">Fecha</div>
+                        <div class="detail-text">Sábado, 24 de Octubre de 2026</div>
+                    </div>
+
+                    <div class="divider-line" style="opacity: 0.5;"></div>
+
+                    <div class="detail-item">
+                        <div class="detail-icon"><i class="fa-regular fa-clock"></i></div>
+                        <div class="detail-title">Horario</div>
+                        <div class="detail-text">[HORA]</div>
+                    </div>
+
+                    <div class="divider-line" style="opacity: 0.5;"></div>
+
+                    <div class="detail-item">
+                        <div class="detail-icon"><i class="fa-solid fa-location-dot"></i></div>
+                        <div class="detail-title">Lugar</div>
+                        <div class="detail-text" style="font-weight: 500;">Villa Florentina</div>
+                        <div class="detail-text" style="font-size: 0.8rem; opacity: 0.8;">Irapuato, Guanajuato</div>
+                        
+                        <!-- BOTÓN UBICACIÓN REAL DE GOOGLE MAPS -->
+                        <a href="https://www.google.com/maps/search/?api=1&query=Villa+Florentina+Irapuato+Guanajuato" 
+                           target="_blank" 
+                           rel="noopener noreferrer" 
+                           class="btn-outline">
+                            <i class="fa-solid fa-map-pin"></i> Ver Ubicación
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 8. DRESS CODE -->
+            <section class="section" style="padding-top: 0;">
+                <div class="card-box reveal">
+                    <div class="detail-icon"><i class="fa-solid fa-user-tie"></i></div>
+                    <h2 class="section-title" style="font-size: 1.3rem;">Código de Vestimenta</h2>
+                    <p class="detail-text" style="margin-top: 5px;">[DRESS CODE]</p>
+                </div>
+            </section>
+
+            <!-- 9. COMPOSICIÓN ILUSTRATIVA DECORATIVA (Sustituto de fotos) -->
+            <section class="section" style="padding: 10px 0;">
+                <div class="floral-composition reveal">
+                    <svg class="floral-svg-center" viewBox="0 0 200 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Composición Botánica Ilustrada -->
+                        <path d="M20,80 C60,20 140,20 180,80" stroke="#B89B72" stroke-width="1" fill="none"/>
+                        <circle cx="100" cy="40" r="18" fill="#F7EBEB" stroke="#8C626A" stroke-width="0.8"/>
+                        <circle cx="70" cy="50" r="12" fill="#FFFFFF" stroke="#B89B72" stroke-width="0.8"/>
+                        <circle cx="130" cy="50" r="12" fill="#FFFFFF" stroke="#B89B72" stroke-width="0.8"/>
+                        <path d="M100,22 C100,10 110,15 100,5" stroke="#8C626A" stroke-width="0.8" fill="none"/>
+                        <path d="M85,30 C75,20 70,25 65,15" stroke="#B89B72" stroke-width="0.8" fill="none"/>
+                        <path d="M115,30 C125,20 130,25 135,15" stroke="#B89B72" stroke-width="0.8" fill="none"/>
+                    </svg>
+                </div>
+            </section>
+
+            <!-- 7. LLUVIA DE SOBRES -->
+            <section class="section">
+                <div class="card-box reveal" style="background: linear-gradient(180deg, #FFFFFF 0%, var(--color-light-rose) 100%);">
+                    <div class="envelope-icon"><i class="fa-regular fa-envelope"></i></div>
+                    <h2 class="section-title">Lluvia de Sobres</h2>
+                    <p class="welcome-text" style="font-style: normal; font-size: 0.88rem; margin-top: 10px;">
+                        Tu presencia es el regalo más grande e importante para mí en esta celebración. 
+                        Si deseas hacerme un obsequio adicional, podrás depositarlo en un sobre el día del evento.
+                    </p>
+                </div>
+            </section>
+
+            <!-- 6. CONFIRMACIÓN DE ASISTENCIA (RSVP) -->
+            <section class="section">
+                <h2 class="section-title reveal">Confirmación de Asistencia</h2>
+                <span class="section-subtitle reveal">RSVP</span>
+
+                <div class="card-box reveal">
+                    <form id="rsvp-form">
+                        <div class="form-group">
+                            <label class="form-label" for="guest-name">Nombre Completo</label>
+                            <input type="text" id="guest-name" class="form-input" placeholder="Tu nombre y apellido" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="guest-attendance">¿Asistirás?</label>
+                            <select id="guest-attendance" class="form-select" required>
+                                <option value="Sí, asistiré con mucho gusto">Sí, asistiré con mucho gusto</option>
+                                <option value="Lamentablemente no podré asistir">Lamentablemente no podré asistir</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="guest-count">Número de Acompañantes</label>
+                            <select id="guest-count" class="form-select">
+                                <option value="Solo yo">Solo yo</option>
+                                <option value="1 Acompañante">1 Acompañante</option>
+                                <option value="2 Acompañantes">2 Acompañantes</option>
+                                <option value="3 Acompañantes">3 Acompañantes</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="guest-note">Mensaje o Nota Opcional</label>
+                            <textarea id="guest-note" class="form-textarea" rows="3" placeholder="Escribe un mensaje para Matilde..."></textarea>
+                        </div>
+
+                        <button type="submit" class="btn-main" style="width: 100%; margin-top: 10px;">
+                            <i class="fa-brands fa-whatsapp" style="font-size: 1.1rem;"></i>
+                            <span>Confirmar por WhatsApp</span>
+                        </button>
+                    </form>
+                </div>
+            </section>
+
+            <!-- 10. CIERRE -->
+            <footer class="footer reveal">
+                <div class="footer-thanks">¡Te espero!</div>
+                <div class="footer-names">Matilde Aleida Nieto</div>
+                <div class="divider-line" style="margin: 20px auto 10px auto;"></div>
+                <p style="font-size: 0.7rem; color: var(--color-secondary); letter-spacing: 1px;">24 . 10 . 2026</p>
+            </footer>
+
+        </main>
+    </div>
+
+    <!-- ==========================================================================
+       JAVASCRIPT
+       ========================================================================== -->
+    <script>
+        // --- 1. APERTURA DE LA INVITACIÓN ---
+        const btnAbrir = document.getElementById('btn-abrir');
+        const portada = document.getElementById('portada');
+        const mainContent = document.getElementById('main-content');
+
+        btnAbrir.addEventListener('click', () => {
+            portada.style.transform = 'translateY(-100%)';
+            portada.style.opacity = '0';
+            
+            setTimeout(() => {
+                portada.style.display = 'none';
+                mainContent.style.display = 'block';
+                setTimeout(() => {
+                    mainContent.style.opacity = '1';
+                    // Inicializar animaciones de Scroll al abrir
+                    initScrollReveal();
+                }, 50);
+            }, 700);
+        });
+
+        // --- 2. CUENTA REGRESIVA DINÁMICA ---
+        // Fecha del evento: 24 de Octubre de 2026
+        const targetDate = new Date('October 24, 2026 00:00:00').getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const difference = targetDate - now;
+
+            if (difference > 0) {
+                const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+                document.getElementById('cd-days').innerText = days < 10 ? '0' + days : days;
+                document.getElementById('cd-hours').innerText = hours < 10 ? '0' + hours : hours;
+                document.getElementById('cd-minutes').innerText = minutes < 10 ? '0' + minutes : minutes;
+                document.getElementById('cd-seconds').innerText = seconds < 10 ? '0' + seconds : seconds;
+            } else {
+                document.getElementById('cd-days').innerText = '00';
+                document.getElementById('cd-hours').innerText = '00';
+                document.getElementById('cd-minutes').innerText = '00';
+                document.getElementById('cd-seconds').innerText = '00';
+            }
+        }
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // --- 3. SISTEMA DE CONFIRMACIÓN POR WHATSAPP (RSVP) ---
+        const rsvpForm = document.getElementById('rsvp-form');
+        // Reemplazar [TELÉFONO DE RSVP] por el número a 10 dígitos (Ej: 524621234567)
+        const whatsappPhoneNumber = "[TELÉFONO DE RSVP]"; 
+
+        rsvpForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const name = document.getElementById('guest-name').value.trim();
+            const attendance = document.getElementById('guest-attendance').value;
+            const count = document.getElementById('guest-count').value;
+            const note = document.getElementById('guest-note').value.trim();
+
+            let message = `¡Hola! Confirmación para los XV Años de Matilde Aleida Nieto:%0A%0A`;
+            message += `*Nombre:* ${encodeURIComponent(name)}%0A`;
+            message += `*Asistencia:* ${encodeURIComponent(attendance)}%0A`;
+            message += `*Acompañantes:* ${encodeURIComponent(count)}%0A`;
+            if (note !== "") {
+                message += `*Mensaje:* ${encodeURIComponent(note)}%0A`;
+            }
+
+            const whatsappUrl = `https://wa.me/${whatsappPhoneNumber}?text=${message}`;
+            window.open(whatsappUrl, '_blank');
+        });
+
+        // --- 4. REPRODUCTOR DE MÚSICA OPCIONAL ---
+        const musicBtn = document.getElementById('music-btn');
+        const bgAudio = document.getElementById('bg-audio');
+        let isPlaying = false;
+
+        musicBtn.addEventListener('click', () => {
+            if (!bgAudio.src || bgAudio.src === window.location.href) {
+                alert("Para activar la música, por favor añade la URL de un archivo MP3 en el elemento <audio>.");
+                return;
+            }
+            
+            if (isPlaying) {
+                bgAudio.pause();
+                musicBtn.classList.remove('playing');
+                musicBtn.innerHTML = '<i class="fa-solid fa-music"></i>';
+            } else {
+                bgAudio.play();
+                musicBtn.classList.add('playing');
+                musicBtn.innerHTML = '<i class="fa-solid fa-pause"></i>';
+            }
+            isPlaying = !isPlaying;
+        });
+
+        // --- 5. ANIMACIONES AL HACER SCROLL ---
+        function initScrollReveal() {
+            ScrollReveal().reveal('.reveal', {
+                duration: 1000,
+                distance: '30px',
+                easing: 'cubic-bezier(0.5, 0, 0, 1)',
+                origin: 'bottom',
+                interval: 150,
+                reset: false
+            });
+        }
+    </script>
+</body>
+</html>
