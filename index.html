@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Mis XV Años - Matilde Aleida Nieto</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- ScrollReveal CDN -->
+    <script src="https://unpkg.com/scrollreveal"></script>
+
+    <style>
+        :root {
+            --color-bg: #FAF6F7;
+            --color-card: #FFFFFF;
+            --color-fiusha: #C2185B;
+            --color-magenta-deep: #700B36;
+            --color-blush: #F8E2EC;
+            --color-gold: #D4AF37;
+            --color-text: #3D3538;
+            
+            --font-title: 'Cormorant Garamond', serif;
+            --font-script: 'Alex Brush', cursive;
+            --font-body: 'Montserrat', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            font-family: var(--font-body);
+            font-weight: 300;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        .wrapper {
+            max-width: 480px;
+            margin: 0 auto;
+            background-color: var(--color-bg);
+            box-shadow: 0 0 40px rgba(112, 11, 54, 0.08);
+            position: relative;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+
+        .frame-ornament {
+            position: absolute;
+            pointer-events: none;
+            z-index: 2;
+            width: 150px;
+            height: 150px;
+            opacity: 0.9;
+        }
+
+        .frame-top-left { top: 0; left: 0; }
+        .frame-top-right { top: 0; right: 0; transform: scaleX(-1); }
+        .frame-bottom-left { bottom: 0; left: 0; transform: scaleY(-1); }
+        .frame-bottom-right { bottom: 0; right: 0; transform: scale(-1); }
+
+        .music-control {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.92);
+            border: 1px solid var(--color-gold);
+            color: var(--color-fiusha);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 99;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(194, 24, 91, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        #portada {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 40px 25px;
+            position: relative;
+            background: radial-gradient(circle at center, #FFFFFF 0%, var(--color-bg) 100%);
+            z-index: 10;
+            transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.8s ease;
+        }
+
+        .tag-sub {
+            font-family: var(--font-body);
+            font-size: 0.75rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--color-fiusha);
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        .hero-name {
+            font-family: var(--font-script);
+            font-size: 4.2rem;
+            color: var(--color-magenta-deep);
+            line-height: 1;
+            margin-bottom: 5px;
+            text-shadow: 0 2px 10px rgba(194, 24, 91, 0.08);
+        }
+
+        .hero-lastname {
+            font-family: var(--font-title);
+            font-size: 1.8rem;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            color: var(--color-fiusha);
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .gold-divider {
+            width: 70px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
+            margin: 15px auto;
+        }
+
+        .event-date-hero {
+            font-family: var(--font-title);
+            font-size: 1.15rem;
+            letter-spacing: 4px;
+            color: var(--color-text);
+            margin-bottom: 35px;
+        }
+
+        .btn-luxury {
+            background: linear-gradient(135deg, var(--color-fiusha), var(--color-magenta-deep));
+            color: #FFFFFF;
+            border: none;
+            padding: 15px 38px;
+            font-family: var(--font-body);
+            font-size: 0.8rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            border-radius: 30px;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(194, 24, 91, 0.3);
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .btn-luxury:active { transform: scale(0.97); }
+
+        #main-content {
+            display: none;
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+
+        .section {
+            padding: 45px 22px;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title {
+            font-family: var(--font-title);
+            font-size: 1.8rem;
+            color: var(--color-magenta-deep);
+            letter-spacing: 2px;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .section-subtitle {
+            font-family: var(--font-script);
+            font-size: 2.2rem;
+            color: var(--color-fiusha);
+            margin-bottom: 15px;
+        }
+
+        .card-luxury {
+            background-color: var(--color-card);
+            border-radius: 20px;
+            padding: 32px 22px;
+            box-shadow: 0 12px 35px rgba(194, 24, 91, 0.05);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            margin-top: 10px;
+            position: relative;
+        }
+
+        .quote-text {
+            font-family: var(--font-title);
+            font-size: 1.2rem;
+            font-style: italic;
+            color: var(--color-text);
+            line-height: 1.8;
+        }
+
+        .countdown-grid {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .countdown-item {
+            background: linear-gradient(180deg, #FFFFFF 0%, var(--color-blush) 100%);
+            border: 1px solid rgba(194, 24, 91, 0.15);
+            border-radius: 12px;
+            padding: 12px 6px;
+            min-width: 68px;
+        }
+
+        .countdown-num {
+            font-family: var(--font-title);
+            font-size: 1.7rem;
+            color: var(--color-magenta-deep);
+            font-weight: 600;
+        }
+
+        .countdown-lbl {
+            font-size: 0.6rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--color-fiusha);
+            margin-top: 2px;
+            font-weight: 500;
+        }
+
+        .info-block { margin-bottom: 22px; }
+        .info-block:last-child { margin-bottom: 0; }
+
+        .info-icon {
+            font-size: 1.5rem;
+            color: var(--color-fiusha);
+            margin-bottom: 6px;
+        }
+
+        .info-heading {
+            font-family: var(--font-title);
+            font-size: 1.25rem;
+            color: var(--color-magenta-deep);
+            margin-bottom: 3px;
+        }
+
+        .info-subtext {
+            font-size: 0.88rem;
+            color: var(--color-text);
+        }
+
+        .btn-outline-gold {
+            background: transparent;
+            color: var(--color-fiusha);
+            border: 1px solid var(--color-gold);
+            padding: 11px 26px;
+            font-family: var(--font-body);
+            font-size: 0.72rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border-radius: 25px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 14px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .btn-outline-gold:active {
+            background-color: var(--color-fiusha);
+            color: #FFFFFF;
+            border-color: var(--color-fiusha);
+        }
+
+        .form-field {
+            margin-bottom: 16px;
+            text-align: left;
+        }
+
+        .field-label {
+            display: block;
+            font-size: 0.7rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--color-magenta-deep);
+            margin-bottom: 6px;
+            font-weight: 600;
+        }
+
+        .field-input, .field-select, .field-area {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1px solid rgba(194, 24, 91, 0.2);
+            border-radius: 10px;
+            background-color: var(--color-bg);
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            color: var(--color-text);
+            outline: none;
+        }
+
+        .field-input:focus, .field-select:focus, .field-area:focus {
+            border-color: var(--color-fiusha);
+            background-color: #FFFFFF;
+        }
+
+        .floral-gallery-art {
+            padding: 20px 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .footer-luxury {
+            padding: 50px 20px;
+            text-align: center;
+            background: linear-gradient(180deg, var(--color-bg) 0%, var(--color-blush) 100%);
+        }
+
+        .footer-script {
+            font-family: var(--font-script);
+            font-size: 3rem;
+            color: var(--color-magenta-deep);
+        }
+
+        .footer-sub {
+            font-family: var(--font-title);
+            font-size: 1rem;
+            letter-spacing: 3px;
+            color: var(--color-fiusha);
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="wrapper">
+
+        <div class="music-control" id="music-btn">
+            <i class="fa-solid fa-music"></i>
+        </div>
+        <audio id="bg-audio" loop preload="none">
+            <source src="" type="audio/mpeg">
+        </audio>
+
+        <section id="portada">
+            <svg class="frame-ornament frame-top-left" viewBox="0 0 100 100" fill="none">
+                <path d="M0,0 Q50,10 60,60 Q20,40 0,0 Z" fill="#C2185B" opacity="0.15"/>
+                <circle cx="25" cy="25" r="18" fill="#700B36" opacity="0.12"/>
+                <path d="M5,5 Q70,20 85,85" stroke="#D4AF37" stroke-width="0.8" fill="none"/>
+            </svg>
+            <svg class="frame-ornament frame-top-right" viewBox="0 0 100 100" fill="none">
+                <path d="M0,0 Q50,10 60,60 Q20,40 0,0 Z" fill="#C2185B" opacity="0.15"/>
+                <circle cx="25" cy="25" r="18" fill="#700B36" opacity="0.12"/>
+                <path d="M5,5 Q70,20 85,85" stroke="#D4AF37" stroke-width="0.8" fill="none"/>
+            </svg>
+
+            <span class="tag-sub">Mis XV Años</span>
+            <h1 class="hero-name">Matilde</h1>
+            <h2 class="hero-lastname">Aleida Nieto</h2>
+
+            <div class="gold-divider"></div>
+
+            <p class="event-date-hero">24 · OCTUBRE · 2026</p>
+
+            <button class="btn-luxury" id="btn-abrir">
+                <span>Abrir Invitación</span>
+                <i class="fa-solid fa-envelope-open" style="font-size: 0.8rem;"></i>
+            </button>
+
+            <svg class="frame-ornament frame-bottom-left" viewBox="0 0 100 100" fill="none">
+                <path d="M0,0 Q50,10 60,60 Q20,40 0,0 Z" fill="#C2185B" opacity="0.15"/>
+                <path d="M5,5 Q70,20 85,85" stroke="#D4AF37" stroke-width="0.8" fill="none"/>
+            </svg>
+            <svg class="frame-ornament frame-bottom-right" viewBox="0 0 100 100" fill="none">
+                <path d="M0,0 Q50,10 60,60 Q20,40 0,0 Z" fill="#C2185B" opacity="0.15"/>
+                <path d="M5,5 Q70,20 85,85" stroke="#D4AF37" stroke-width="0.8" fill="none"/>
+            </svg>
+        </section>
+
+        <main id="main-content">
+
+            <section class="section">
+                <div class="card-luxury reveal">
+                    <span class="section-subtitle">Bienvenidos</span>
+                    <p class="quote-text">
+                        "Hay momentos únicos en la vida que se guardan para siempre en el corazón, y compartirlos con quienes más quiero los hace inolvidables. Gracias por acompañarme a celebrar este día tan especial."
+                    </p>
+                </div>
+            </section>
+
+            <section class="section" style="padding-top: 0;">
+                <h3 class="section-title reveal" style="font-size: 1.3rem;">Cada Vez Falta Menos</h3>
+                <div class="countdown-grid reveal">
+                    <div class="countdown-item">
+                        <div class="countdown-num" id="cd-days">00</div>
+                        <div class="countdown-lbl">Días</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div class="countdown-num" id="cd-hours">00</div>
+                        <div class="countdown-lbl">Horas</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div class="countdown-num" id="cd-minutes">00</div>
+                        <div class="countdown-lbl">Min</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div class="countdown-num" id="cd-seconds">00</div>
+                        <div class="countdown-lbl">Seg</div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2 class="section-title reveal">Detalles de la Celebración</h2>
+                <span class="section-subtitle reveal">Recepción</span>
+
+                <div class="card-luxury reveal">
+                    <div class="info-block">
+                        <div class="info-icon"><i class="fa-regular fa-calendar-check"></i></div>
+                        <div class="info-heading">Fecha</div>
+                        <div class="info-subtext">Sábado, 24 de Octubre de 2026</div>
+                    </div>
+
+                    <div class="gold-divider"></div>
+
+                    <div class="info-block">
+                        <div class="info-icon"><i class="fa-regular fa-clock"></i></div>
+                        <div class="info-heading">Hora</div>
+                        <div class="info-subtext">6:00 PM</div>
+                    </div>
+
+                    <div class="gold-divider"></div>
+
+                    <div class="info-block">
+                        <div class="info-icon"><i class="fa-solid fa-location-dot"></i></div>
+                        <div class="info-heading">Lugar</div>
+                        <div class="info-subtext" style="font-weight: 600; color: var(--color-magenta-deep);">Villa Florentina</div>
+                        <div class="info-subtext" style="font-size: 0.8rem;">Paseo de las Fuentes #1247, Villas de Irapuato</div>
+                        <div class="info-subtext" style="font-size: 0.8rem;">Irapuato, Guanajuato</div>
+
+                        <a href="https://www.google.com/maps/search/?api=1&query=Paseo+de+las+Fuentes+1247+Villas+de+Irapuato+Guanajuato" 
+                           target="_blank" 
+                           rel="noopener noreferrer" 
+                           class="btn-outline-gold">
+                            <i class="fa-solid fa-map-location-dot"></i> Ver Ubicación
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section" style="padding-top: 0;">
+                <div class="card-luxury reveal">
+                    <div class="info-icon"><i class="fa-solid fa-user-tie"></i></div>
+                    <h2 class="section-title" style="font-size: 1.4rem;">Código de Vestimenta</h2>
+                    <p class="info-subtext" style="font-weight: 600; color: var(--color-fiusha); font-size: 1rem; margin-top: 4px;">FORMAL</p>
+                </div>
+            </section>
+
+            <section class="section" style="padding: 10px 0;">
+                <div class="floral-gallery-art reveal">
+                    <svg width="260" height="90" viewBox="0 0 260 90" fill="none">
+                        <path d="M10,80 C80,10 180,10 250,80" stroke="#D4AF37" stroke-width="0.8"/>
+                        <circle cx="130" cy="40" r="22" fill="#F8E2EC" stroke="#C2185B" stroke-width="0.8"/>
+                        <circle cx="130" cy="40" r="14" fill="#C2185B" opacity="0.2"/>
+                        <circle cx="95" cy="50" r="14" fill="#FFFFFF" stroke="#D4AF37" stroke-width="0.8"/>
+                        <circle cx="165" cy="50" r="14" fill="#FFFFFF" stroke="#D4AF37" stroke-width="0.8"/>
+                    </svg>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="card-luxury reveal" style="background: linear-gradient(180deg, #FFFFFF 0%, var(--color-blush) 100%);">
+                    <div class="info-icon"><i class="fa-regular fa-envelope-open"></i></div>
+                    <h2 class="section-title">Lluvia de Sobres</h2>
+                    <p class="info-subtext" style="line-height: 1.7; margin-top: 8px;">
+                        Tu presencia es el regalo más especial para mí. Si deseas acompañarnos con un detalle, hemos dispuesto una lluvia de sobres el día del evento.
+                    </p>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2 class="section-title reveal">Confirmación de Asistencia</h2>
+                <span class="section-subtitle reveal">RSVP</span>
+
+                <div class="card-luxury reveal">
+                    <form id="rsvp-form">
+                        <div class="form-field">
+                            <label class="field-label" for="guest-name">Nombre Completo</label>
+                            <input type="text" id="guest-name" class="field-input" placeholder="Tu nombre" required>
+                        </div>
+
+                        <div class="form-field">
+                            <label class="field-label" for="guest-attendance">¿Asistirás?</label>
+                            <select id="guest-attendance" class="field-select" required>
+                                <option value="Sí, asistiré con mucho gusto">Sí, asistiré con mucho gusto</option>
+                                <option value="Lamentablemente no podré asistir">Lamentablemente no podré asistir</option>
+                            </select>
+                        </div>
+
+                        <div class="form-field">
+                            <label class="field-label" for="guest-count">Número de Acompañantes</label>
+                            <select id="guest-count" class="field-select">
+                                <option value="Solo yo">Solo yo</option>
+                                <option value="1 Acompañante">1 Acompañante</option>
+                                <option value="2 Acompañantes">2 Acompañantes</option>
+                                <option value="3 Acompañantes">3 Acompañantes</option>
+                            </select>
+                        </div>
+
+                        <div class="form-field">
+                            <label class="field-label" for="guest-note">Mensaje Opcional</label>
+                            <textarea id="guest-note" class="field-area" rows="3" placeholder="Mensaje para Matilde..."></textarea>
+                        </div>
+
+                        <button type="submit" class="btn-luxury" style="width: 100%; justify-content: center; margin-top: 10px;">
+                            <i class="fa-brands fa-whatsapp" style="font-size: 1.1rem;"></i>
+                            <span>Confirmar Asistencia</span>
+                        </button>
+                    </form>
+                </div>
+            </section>
+
+            <footer class="footer-luxury reveal">
+                <p style="font-size: 0.88rem; color: var(--color-text); margin-bottom: 10px;">Gracias por ser parte de este momento tan especial.</p>
+                <div class="footer-script">Con cariño,</div>
+                <div class="footer-sub">Matilde</div>
+                <div class="gold-divider" style="margin: 20px auto;"></div>
+                <p style="font-size: 0.75rem; color: var(--color-fiusha); letter-spacing: 2px;">24 · 10 · 2026</p>
+            </footer>
+
+        </main>
+    </div>
+
+    <script>
+        const btnAbrir = document.getElementById('btn-abrir');
+        const portada = document.getElementById('portada');
+        const mainContent = document.getElementById('main-content');
+
+        btnAbrir.addEventListener('click', () => {
+            portada.style.transform = 'translateY(-100%)';
+            portada.style.opacity = '0';
+            
+            setTimeout(() => {
+                portada.style.display = 'none';
+                mainContent.style.display = 'block';
+                setTimeout(() => {
+                    mainContent.style.opacity = '1';
+                    initScroll();
+                }, 50);
+            }, 700);
+        });
+
+        const targetDate = new Date('October 24, 2026 18:00:00').getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const diff = targetDate - now;
+
+            if (diff > 0) {
+                const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const s = Math.floor((diff % (1000 * 60)) / 1000);
+
+                document.getElementById('cd-days').innerText = d < 10 ? '0' + d : d;
+                document.getElementById('cd-hours').innerText = h < 10 ? '0' + h : h;
+                document.getElementById('cd-minutes').innerText = m < 10 ? '0' + m : m;
+                document.getElementById('cd-seconds').innerText = s < 10 ? '0' + s : s;
+            }
+        }
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        const rsvpForm = document.getElementById('rsvp-form');
+        const whatsappPhoneNumber = "524622879356";
+
+        rsvpForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('guest-name').value.trim();
+            const attendance = document.getElementById('guest-attendance').value;
+            const count = document.getElementById('guest-count').value;
+            const note = document.getElementById('guest-note').value.trim();
+
+            let msg = `¡Hola! Confirmación para los XV Años de Matilde Aleida Nieto:%0A%0A`;
+            msg += `*Nombre:* ${encodeURIComponent(name)}%0A`;
+            msg += `*Asistencia:* ${encodeURIComponent(attendance)}%0A`;
+            msg += `*Acompañantes:* ${encodeURIComponent(count)}%0A`;
+            if (note) msg += `*Mensaje:* ${encodeURIComponent(note)}%0A`;
+
+            window.open(`https://wa.me/${whatsappPhoneNumber}?text=${msg}`, '_blank');
+        });
+
+        const musicBtn = document.getElementById('music-btn');
+        const bgAudio = document.getElementById('bg-audio');
+        let playing = false;
+
+        musicBtn.addEventListener('click', () => {
+            if (!bgAudio.src || bgAudio.src === window.location.href) {
+                alert("Coloca la URL de un archivo MP3 en el código para reproducir música.");
+                return;
+            }
+            if (playing) {
+                bgAudio.pause();
+                musicBtn.innerHTML = '<i class="fa-solid fa-music"></i>';
+            } else {
+                bgAudio.play();
+                musicBtn.innerHTML = '<i class="fa-solid fa-pause"></i>';
+            }
+            playing = !playing;
+        });
+
+        function initScroll() {
+            ScrollReveal().reveal('.reveal', {
+                duration: 900,
+                distance: '25px',
+                origin: 'bottom',
+                interval: 120,
+                reset: false
+            });
+        }
+    </script>
+</body>
+</html>
